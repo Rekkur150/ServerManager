@@ -8,9 +8,23 @@ namespace ServerManager
 {
     class Action
     {
-        public virtual bool Execute()
+
+        public event EventHandler Exected;
+
+        public void Execute()
         {
-            return default(bool);
+            //await Task.Run(action);
+            action();
+        }
+
+        protected virtual void action()
+        {
+            OnExecuted(new EventArgs());
+        }
+
+        protected virtual void OnExecuted(EventArgs e)
+        {
+            if (Exected != null) Exected(this, e);
         }
     }
 }

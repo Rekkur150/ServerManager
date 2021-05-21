@@ -18,11 +18,10 @@ namespace ServerManager
             command = Command;
         }
 
-        public override bool Execute()
+        protected override void action()
         {
             app.Run(command);
-
-            return true;
+            base.action();
         }
 
     }
