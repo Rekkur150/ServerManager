@@ -29,6 +29,7 @@ namespace ServerManager
 
         public void Execute()
         {
+            CurrentAction = 0;
             ExecuteAction(0);
         }
 
@@ -39,7 +40,8 @@ namespace ServerManager
 
             Actions[actionIndex].Exected += new EventHandler((object sender, EventArgs e) =>
             {
-                ExecuteAction(CurrentAction++);
+                CurrentAction++;
+                ExecuteAction(CurrentAction);
             });
 
             Actions[actionIndex].Execute();
